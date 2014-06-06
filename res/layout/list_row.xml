@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/list_selector"
+    android:orientation="horizontal"
+    android:padding="5dp"
+    android:saveEnabled="true" >
+
+    <!-- ListRow Left sied Thumbnail image -->
+
+    <LinearLayout
+        android:id="@+id/thumbnail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/image_bg"
+        android:padding="3dp" >
+
+        <ImageView
+            android:id="@+id/list_image"
+            android:layout_width="60dp"
+            android:layout_height="70dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/scmm" />
+    </LinearLayout>
+
+    <!-- Marathon Name -->
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/thumbnail"
+        android:layout_toLeftOf="@+id/racedate"
+        android:layout_toRightOf="@+id/thumbnail"
+        android:text="@string/title"
+        android:textColor="#040404"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:typeface="sans" />
+
+    <!-- Race Location -->
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/dualtag"
+        android:layout_below="@id/title"
+        android:layout_marginTop="1dp"
+        android:layout_toRightOf="@+id/thumbnail"
+        android:text="@string/location"
+        android:textColor="#343434"
+        android:textSize="13sp" />
+
+    <!-- Race Date -->
+
+    <!-- Rightend Arrow -->
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/arrow" />
+
+    
+	<!--  Ultra tag -->
+    <TextView
+        android:id="@+id/ultratag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tritag"
+        android:layout_alignBottom="@+id/tritag"
+        android:layout_toLeftOf="@+id/imageView1"
+        android:padding="5dp"
+        android:text="@string/ut"
+        android:textColor="#808080"
+        android:textSize="12sp" />
+	
+	<!-- Trialthon Tag -->
+    <TextView
+        android:id="@+id/tritag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/dualtag"
+        android:layout_alignBottom="@+id/dualtag"
+        android:layout_toLeftOf="@+id/ultratag"
+        android:padding="5dp"
+        android:text="@string/tl"
+        android:textColor="#808080"
+        android:textSize="12sp" />
+	<!--  Dualathon Tag -->
+    <TextView
+        android:id="@+id/dualtag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/fivektag"
+        android:layout_alignBottom="@+id/fivektag"
+        android:layout_toLeftOf="@+id/tritag"
+        android:padding="5dp"
+        android:text="@string/dl"
+        android:textColor="#808080"
+        android:textSize="12sp" />
+	<!-- Five K Tag  -->
+    <TextView
+        android:id="@+id/fivektag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tenktag"
+        android:layout_alignBottom="@+id/tenktag"
+        android:layout_toLeftOf="@+id/dualtag"
+        android:padding="5dp"
+        android:text="@string/fivek"
+        android:textColor="#808080"
+        android:textSize="12sp" />
+	
+    <!-- Ten K Tag -->
+    <TextView
+        android:id="@+id/tenktag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/hmtag"
+        android:layout_alignBottom="@+id/hmtag"
+        android:layout_toLeftOf="@+id/fivektag"
+        android:padding="5dp"
+        android:text="@string/tenk"
+        android:textColor="#808080"
+        android:textSize="12sp" />
+		
+    <!-- Half Marathon Tag -->
+    <TextView
+        android:id="@+id/hmtag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/fmtag"
+        android:layout_alignBottom="@+id/fmtag"
+        android:layout_toLeftOf="@+id/tenktag"
+        android:padding="5dp"
+        android:text="@string/hm"
+        android:textColor="#808080"
+        android:textSize="12sp" />
+	<!-- Full Marathon tag -->
+    <TextView
+        android:id="@+id/fmtag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/location"
+        android:layout_toLeftOf="@+id/hmtag"
+        android:padding="5dp"
+        android:text="@string/fm"
+        android:textColor="#808080"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/racedate"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/title"
+        android:layout_alignBottom="@+id/title"
+        android:layout_alignLeft="@+id/dualtag"
+        android:layout_toLeftOf="@+id/imageView1"
+        android:gravity="right"
+        android:text="@string/date"
+        android:textColor="#7799F5"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+        <!--  ID tag Not displayed on the screen -->
+    <TextView
+        android:id="@+id/idtag"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_below="@+id/location"
+        android:layout_toLeftOf="@+id/hmtag"
+        android:padding="0dp"
+        android:textColor="#808080"
+        android:textSize="0sp" />
+    
+
+</RelativeLayout>

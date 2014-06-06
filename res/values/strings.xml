@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources 
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation" >
+
+    <string name="app_name">Calathon</string>
+    <string name="title_race_detail">Race Detail</string>
+    <string name="title_activity_splash_screen">SplashScreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title">Mumbai Marathon</string>
+    <string name="location">Mumbai</string>
+    <string name="date">Jan 18</string>
+    <string name="ut">UT</string>
+    <string name="fm">FM</string>
+	<string name="hm">HM</string>
+	<string name="tenk">10K</string>
+	<string name="fivek">5K</string>
+	<string name="dl">DL</string>
+	<string name="tl">TL</string>
+	<string name="arrow">Right arrow</string>
+	<string name="logo">Logo of the race</string>
+</resources>

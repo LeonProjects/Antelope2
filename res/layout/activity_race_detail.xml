@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ScrollView01"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:scrollbars="none" >
+
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:isScrollContainer="true"
+    android:orientation="vertical" >
+
+    <!-- ListRow Right sied Thumbnail image -->
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.05"
+        android:background="@drawable/list_selector"
+        android:orientation="horizontal"
+        android:padding="5dip" >
+
+        <LinearLayout
+            android:id="@+id/thumbnail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dip"
+            android:background="@drawable/image_bg"
+            android:padding="3dip" >
+
+            <ImageView
+                android:id="@+id/detail_image"
+                android:layout_width="60dip"
+                android:layout_height="35dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/scmm" />
+        </LinearLayout>
+        <!-- Header Tag for About the event -->
+
+        <TextView
+            android:id="@+id/header_about"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="05dp"
+            android:text="About the Event"
+            android:textColor="#040404"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:typeface="sans" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/detail_info"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:text="Loads of chatter with new friends Buy your snacks and refreshments at Juju’s.unning And Living Patiala Half Marathon is heldLoads of chatter with new friends Buy your snacks and refreshments at Juju’s.unning And Living Patiala Half Marathon is heldLoads of chatter with new friends Buy your snacks and refreshments at Juju’s.unning And Living Patiala Half Marathon is heldLoads of chatter with new friends Buy your snacks and refreshments at Juju’s.unning And Living Patiala Half Marathon is held in Patiala, Punjab, India, since 2013. The events include marathon of the snaps from the morning"
+        android:textColor="#040404"
+        android:textSize="15sp"
+        android:typeface="sans" />
+
+    <TextView
+        android:id="@+id/header_raceinfo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/list_selector"
+        android:padding="12sp"
+        android:text="Race Information"
+        android:textColor="#040404"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:typeface="sans" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dip" >
+
+        <TextView
+            android:id="@+id/detail_racelocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/header_racelocation"
+            android:layout_alignBottom="@+id/header_racelocation"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="21dp"
+            android:layout_toRightOf="@+id/header_racelocation"
+            android:text="Mumbai, Maharashtra"
+            android:textColor="#040404"
+            android:textSize="15sp"
+            android:typeface="sans" />
+
+        <TextView
+            android:id="@+id/header_racedate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="18dp"
+            android:text="Race Date :"
+            android:textColor="#040404"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:typeface="sans" />
+
+        <TextView
+            android:id="@+id/detail_racedate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/header_racedate"
+            android:layout_alignBottom="@+id/header_racedate"
+            android:layout_alignLeft="@+id/detail_racelocation"
+            android:text="Jan 18 2014"
+            android:textColor="#040404"
+            android:textSize="15sp"
+            android:typeface="sans" />
+
+        <TextView
+            android:id="@+id/header_racelocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/header_racedate"
+            android:layout_below="@+id/header_racedate"
+            android:text="Race Location :"
+            android:textColor="#040404"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:typeface="sans" />
+
+        <TextView
+            android:id="@+id/detail_racetype"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/header_racetype"
+            android:layout_alignLeft="@+id/detail_racelocation"
+            android:layout_below="@+id/detail_racelocation"
+            android:text="Full, Half, 10K"
+            android:textColor="#040404"
+            android:textSize="15sp"
+            android:typeface="sans" />
+
+        <TextView
+            android:id="@+id/header_racetype"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/header_racelocation"
+            android:layout_below="@+id/header_racelocation"
+            android:text="Event Type :"
+            android:textColor="#040404"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:typeface="sans" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/header_reginfo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/list_selector"
+        android:padding="12sp"
+        android:text="Registration Information"
+        android:textColor="#040404"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:typeface="sans" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dip" >
+
+        <TextView
+            android:id="@+id/header_racefees"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="18dp"
+            android:text="Race Fees  :"
+            android:textColor="#040404"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:typeface="sans" />
+
+        <TextView
+            android:id="@+id/header_regdate"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignLeft="@+id/header_racefees"
+            android:layout_alignParentBottom="true"
+            android:text="Reg. Dates :"
+            android:textColor="#040404"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:typeface="sans" />
+
+        <TextView
+            android:id="@+id/detail_regdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/detail_racefees"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="43dp"
+            android:layout_toRightOf="@+id/header_racefees"
+            android:text="May 10 2014 - Jun 01 2014"
+            android:textColor="#040404"
+            android:textSize="15sp"
+            android:typeface="sans" />
+
+        <TextView
+            android:id="@+id/detail_racefees"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/detail_regdate"
+            android:layout_alignParentBottom="true"
+            android:text="Rs 1000 - Rs 1500"
+            android:textColor="#040404"
+            android:textSize="15sp"
+            android:typeface="sans" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/header_racewebsite"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/list_selector"
+        android:padding="12sp"
+        android:text="Link to the Official Website"
+        android:textColor="#040404"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:typeface="sans" />
+
+    <!-- ListRow Right sied Thumbnail image -->
+    
+    <TextView
+        android:id="@+id/header_routemapimgae"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/list_selector"
+        android:padding="12sp"
+        android:text="Race Route Map"
+        android:textColor="#040404"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:typeface="sans" />
+    
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="300dp"
+        android:layout_weight="0.05"
+        android:background="@drawable/list_selector"
+        android:orientation="horizontal"
+        android:padding="5dip" >
+
+        <LinearLayout
+            android:id="@+id/thumbnail2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/image_bg"
+            android:padding="0dp" >
+
+            <ImageView
+                android:id="@+id/routemap_image"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:src="@drawable/route_map" />
+        </LinearLayout>
+        </RelativeLayout>
+</LinearLayout>
+</ScrollView>
