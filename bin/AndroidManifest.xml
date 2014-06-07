@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.leonproject.antelope2"
-    android:versionCode="2"
+    android:versionCode="3" 
     android:versionName="1.0" >
 	   <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
@@ -17,6 +17,7 @@
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-sdk
         android:minSdkVersion="11"
         android:targetSdkVersion="17" />
@@ -30,12 +31,13 @@
             android:name="com.leonproject.antelope2.SplashScreenActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar" >
-            <intent-filter>
+		<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+         </intent-filter>
+       
+    </activity>
         <activity
             android:name="com.leonproject.antelope2.RaceListActivity"
             android:label="@string/app_name" >
@@ -48,6 +50,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".RaceListActivity" />
         </activity>
+        
         <receiver
             android:name=".GcmBroadcastReceiver"
             android:permission="com.google.android.c2dm.permission.SEND" >
@@ -58,8 +61,21 @@
                 <category android:name="com.leonproject.antelope2" />
             </intent-filter>
         </receiver>
-
         <service android:name=".GCMNotificationIntentService" />
+        
+        <receiver android:name=".UpdateReceiver">
+    		<intent-filter>
+        		<action android:name="android.intent.action.PACKAGE_REPLACED" />
+        		<data android:path="com.leonproject.antelope2"
+              	android:scheme="package" />
+    		</intent-filter>
+  		</receiver>
+  		<receiver android:name=".UpdateReceiver">
+    		<intent-filter>
+        		<action android:name="android.intent.action.BOOT_COMPLETED" />
+    		</intent-filter>
+		</receiver>
+  		<service android:name=".UpdateReceiverIntentService" />
     </application>
     
 

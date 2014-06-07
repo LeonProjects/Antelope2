@@ -51,28 +51,26 @@ public class SplashScreenActivity extends Activity {
  
         			if (TextUtils.isEmpty(regId)) {
         				System.out.println("Pre registration");
-    					try {
-							regId = registerGCM();
+        				try {
+							Thread.sleep(SPLASH_TIME_OUT);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
+        				Intent rIntent = new Intent(context,UpdateReceiverIntentService.class);
+        				context.startService(rIntent);	
+					
     					System.out.println("GCM RegId: " + regId);
     				} else {
     					
     					System.out.println("Its already registerd.");
-    					
-    					Toast.makeText(getApplicationContext(),
-    							"Already Registered with GCM Server!",
-    							Toast.LENGTH_SHORT).show();
-    					
     				}
         			return null;
         				}
         				
         @Override
         protected void onPostExecute(Void result) {
-        	
+        
         super.onPostExecute(result);
         // After completing http call
         // will close this activity and lauch main activity
@@ -81,97 +79,6 @@ public class SplashScreenActivity extends Activity {
         // close this activity
          finish();
         }
-     }
-    public String registerGCM() throws InterruptedException {
-
-		gcm = GoogleCloudMessaging.getInstance(this);
-		regId = getRegistrationId(context);
-
-		if (TextUtils.isEmpty(regId)) {
-
-			registerInBackground();
-
-			System.out.println("RegisterActivity"+
-					"registerGCM - successfully registered with GCM server - regId: "
-							+ regId);
-			appUtil = new ShareExternalServer();
-			appUtil.shareRegIdWithAppServer(context, regId);
-			
-		} else {
-			System.out.println("RegId already registered.Re-registerting with App server");
-			/*Here the regId is registered with the GCM server we will still try to re-register with the App server 
-			  as in the first case it might have failed. Not an ideal way of doing it , should save state whether it is registered with app server
-			  but currently the server is not communicating back to the app. So we will re register and at the the server end taken care that no 
-			  duplicate registration is done */
-			
-			appUtil = new ShareExternalServer();
-			appUtil.shareRegIdWithAppServer(context, regId);
-			
-			Thread.sleep(SPLASH_TIME_OUT);
-			
-		}
-		return regId;
-	}
-
-	private String getRegistrationId(Context context) {
-		final SharedPreferences prefs = getSharedPreferences(
-				RaceListActivity.class.getSimpleName(), Context.MODE_PRIVATE);
-		String registrationId = prefs.getString(REG_ID, "");
-		if (registrationId.isEmpty()) {
-			System.out.println(TAG + "Registration not found.");
-			return "";
-		}
-		int registeredVersion = prefs.getInt(APP_VERSION, Integer.MIN_VALUE);
-		int currentVersion = getAppVersion(context);
-		if (registeredVersion != currentVersion) {
-			System.out.println(TAG + "App version changed.");
-			return "";
-		}
-		return registrationId;
-	}
-
-	private static int getAppVersion(Context context) {
-		try {
-			PackageInfo packageInfo = context.getPackageManager()
-					.getPackageInfo(context.getPackageName(), 0);
-			return packageInfo.versionCode;
-		} catch (NameNotFoundException e) {
-			System.out.println("RegisterActivity"+
-					"I never expected this! Going down, going down!" + e);
-			throw new RuntimeException(e);
-		}
-	}
-
-	private void registerInBackground() {
-		
-				String msg = "";
-				try {
-					if (gcm == null) {
-						gcm = GoogleCloudMessaging.getInstance(context);
-					}
-					regId = gcm.register(Config.GOOGLE_PROJECT_ID);
-					System.out.println("RegisterActivity"+ "registerInBackground - regId: "
-							+ regId);
-					msg = "Device registered, registration ID=" + regId;
-
-					storeRegistrationId(context, regId);
-				} catch (IOException ex) {
-					msg = "Error :" + ex.getMessage();
-					System.out.println("RegisterActivity"+  "Error: " + msg);
-				}
-				System.out.println("RegisterActivity"+ "AsyncTask completed: " + msg);		
-		}
-	
-
-	private void storeRegistrationId(Context context, String regId) {
-		final SharedPreferences prefs = getSharedPreferences(
-				RaceListActivity.class.getSimpleName(), Context.MODE_PRIVATE);
-		int appVersion = getAppVersion(context);
-		System.out.println(TAG + "Saving regId on app version " + appVersion);
-		SharedPreferences.Editor editor = prefs.edit();
-		editor.putString(REG_ID, regId);
-		editor.putInt(APP_VERSION, appVersion);
-		editor.commit();
-	}
-
+    }
 }
+ 

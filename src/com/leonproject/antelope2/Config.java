@@ -3,7 +3,7 @@ package com.leonproject.antelope2;
 public interface Config {
 
 	// used to share GCM regId with application server - using php app server
-	static final String APP_SERVER_URL = "http://www.leonprojects.in/Calathon/gcm.php?shareRegId=1";
+	static final String APP_SERVER_URL = "http://www.leonprojects.in/Calathon/TestingEnv/gcm.php?shareRegId=1";
 
 	// GCM server using java
 	// static final String APP_SERVER_URL =
