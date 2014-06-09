@@ -66,7 +66,6 @@ public class RaceListActivity extends Activity {
 	static final String KEY_TRI = "tri";
 	static final String KEY_ULTRA = "ultra";
 	public static final String YES = "Y";
-	static final String raceXML =  "races3.xml";
 	static final String logoUrl =  "http://www.leonprojects.in/Calathon/images/logo/";
 	static final String routeUrl = "http://www.leonprojects.in/Calathon/images/route/";
 	static final String xmlUrl =   "http://www.leonprojects.in/Calathon/xml/races.xml";
@@ -96,7 +95,7 @@ public class RaceListActivity extends Activity {
 	
 	public void parseXML() throws IOException{
 		
-		  FileInputStream in = openFileInput(xmlFile);
+			FileInputStream in = openFileInput(xmlFile);
 		    InputStreamReader inputStreamReader = new InputStreamReader(in);
 		    BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 		    StringBuilder sb = new StringBuilder();
@@ -169,6 +168,7 @@ public class RaceListActivity extends Activity {
 	    	super.onPreExecute();
 	    	Dialog.setMessage("Fetching Details...");
 	        Dialog.show();
+	        Dialog.setCancelable(false);
 	    	
 	    	}
 	        @Override
@@ -209,9 +209,7 @@ public class RaceListActivity extends Activity {
 	        try {
 				parseXML();
 				
-		//		 Toast.makeText(getApplicationContext(),
-		//					"XML fetched from URL!",
-		//					Toast.LENGTH_SHORT).show();
+
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				Toast.makeText(getApplicationContext(),

@@ -11,7 +11,7 @@
     android:isScrollContainer="true"
     android:orientation="vertical" >
 
-    <!-- ListRow Right sied Thumbnail image -->
+    <!-- ListRow Right side Thumbnail image -->
 
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -58,7 +58,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="10dp"
-        android:text="Loads of chatter with new friends Buy your snacks and refreshments at Juju’s.unning And Living Patiala Half Marathon is heldLoads of chatter with new friends Buy your snacks and refreshments at Juju’s.unning And Living Patiala Half Marathon is heldLoads of chatter with new friends Buy your snacks and refreshments at Juju’s.unning And Living Patiala Half Marathon is heldLoads of chatter with new friends Buy your snacks and refreshments at Juju’s.unning And Living Patiala Half Marathon is held in Patiala, Punjab, India, since 2013. The events include marathon of the snaps from the morning"
+        android:text="The required event couldn't be loaded, as the race details are not in sync. Please restart Calathon App and click on the notification again."
         android:textColor="#040404"
         android:textSize="15sp"
         android:typeface="sans" />
@@ -91,7 +91,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginLeft="21dp"
             android:layout_toRightOf="@+id/header_racelocation"
-            android:text="Mumbai, Maharashtra"
+            android:text="Not Available"
             android:textColor="#040404"
             android:textSize="15sp"
             android:typeface="sans" />
@@ -117,7 +117,7 @@
             android:layout_alignBaseline="@+id/header_racedate"
             android:layout_alignBottom="@+id/header_racedate"
             android:layout_alignLeft="@+id/detail_racelocation"
-            android:text="Jan 18 2014"
+            android:text="Not Available"
             android:textColor="#040404"
             android:textSize="15sp"
             android:typeface="sans" />
@@ -213,7 +213,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginLeft="43dp"
             android:layout_toRightOf="@+id/header_racefees"
-            android:text="May 10 2014 - Jun 01 2014"
+            android:text="Not Known"
             android:textColor="#040404"
             android:textSize="15sp"
             android:typeface="sans" />
@@ -224,7 +224,7 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/detail_regdate"
             android:layout_alignParentBottom="true"
-            android:text="Rs 1000 - Rs 1500"
+            android:text="Not Known"
             android:textColor="#040404"
             android:textSize="15sp"
             android:typeface="sans" />

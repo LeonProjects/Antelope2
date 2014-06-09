@@ -1,16 +1,29 @@
 package com.leonproject.antelope2;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
@@ -38,7 +51,9 @@ public class RaceDetailActivity extends Activity {
 	static final String KEY_WEBSITE = "website";
 	static final String KEY_ROUTE_MAP = "route";
 	public ImageLoader imageLoader; 
-	
+	StringBuilder sb = new StringBuilder();
+	XMLParser parser = new XMLParser();
+	String xml;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,18 +61,27 @@ public class RaceDetailActivity extends Activity {
 		
 		setContentView(R.layout.activity_race_detail);
 		
-	    getActionBar().setDisplayHomeAsUpEnabled(false);
+	    getActionBar().setDisplayHomeAsUpEnabled(true);
 	    imageLoader=new ImageLoader(this.getApplicationContext());
 	    
 		
-		Intent list_intent = getIntent();
-		String title_id = list_intent.getStringExtra("title_id");
-		
-		XMLParser parser = new XMLParser();
-		StringBuilder sb = new StringBuilder();
-		
-		try {
+		File file = getBaseContext().getFileStreamPath(RaceListActivity.xmlFile);
+		if(file.exists()) {
+			System.out.println("RaceDetail: File Does Exist");
+			readFile();
+			}
+		else{
+			System.out.println("RaceDetail: File Does Not Exist");
+				new PrefetchXML().execute();
 			
+		}		       
+	        
+	}
+	public int getImageId(String imageName) {
+        return getResources().getIdentifier(imageName, "drawable", getPackageName());
+	}
+	public void readFile (){
+		try {
 		FileInputStream in = openFileInput(RaceListActivity.xmlFile);
 	    InputStreamReader inputStreamReader = new InputStreamReader(in);
 	    BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
@@ -66,12 +90,17 @@ public class RaceDetailActivity extends Activity {
 	        sb.append(line);
 	    }
 	    inputStreamReader.close();
+	    in.close();
 		}
+		
 		catch (IOException e){
 			Toast.makeText(getApplicationContext(),
 					"Couldn't Load Race Detail",
 					Toast.LENGTH_SHORT).show();
 		}
+		Intent list_intent = getIntent();
+		String title_id = list_intent.getStringExtra("title_id");
+		
 		
 		Document doc = parser.getDomElement(sb.toString()); // getting DOM element
 		
@@ -172,12 +201,60 @@ public class RaceDetailActivity extends Activity {
 			   imageLoader.DisplayImage(RaceListActivity.routeUrl+ String.valueOf(parser.getValue(e,KEY_ROUTE_MAP)) + RaceListActivity.logoExtn, routemap_image);	        
 		       
 			}
-			
-		}       
+		}
+		
+	}
+	 private class PrefetchXML extends AsyncTask<Void, Void, Integer> {
+	    	private ProgressDialog Dialog = new ProgressDialog(RaceDetailActivity.this);
+	    	
+	    	@Override
+	    	protected void onPreExecute(){
+	    	super.onPreExecute();
+	    	Dialog.setMessage("Fetching Details...");
+	        Dialog.show();
+	        Dialog.setCancelable(false);
+	    	
+	    	}
+	        @Override
+	      	protected Integer doInBackground(Void... arg0) {
+	 
+	    		try {
+	    			
+	    			// defaultHttpClient
+	    			DefaultHttpClient httpClient = new DefaultHttpClient();
+	    			HttpPost httpPost = new HttpPost(RaceListActivity.xmlUrl);
+
+	    			HttpResponse httpResponse = httpClient.execute(httpPost);
+	    			HttpEntity httpEntity = httpResponse.getEntity();
+	    			xml = EntityUtils.toString(httpEntity);
+	    			if (xml != null)
+	    			{
+	    				FileOutputStream fos = openFileOutput(RaceListActivity.xmlFile, Context.MODE_PRIVATE);
+	    				fos.write(xml.getBytes());
+	    				fos.close();
+	    				
+	    			}
+
+	    		} catch (UnsupportedEncodingException e) {
+	    			e.printStackTrace();
+	    		} catch (ClientProtocolException e) {
+	    			e.printStackTrace();
+	    		} catch (IOException e) {
+	    			e.printStackTrace();
+	    		}
+	    		// return XML
+	    		return 0;
+	    	}
+	        				
+	        @Override
+	        protected void onPostExecute(Integer result) {
+	        	Dialog.dismiss();        
+
+				readFile();
+				
+	        }
 	        
-	}
-	public int getImageId(String imageName) {
-        return getResources().getIdentifier(imageName, "drawable", getPackageName());
-	}
-	
+	 }
 }
+	
+
